@@ -1,4 +1,4 @@
-atom_data_path: "$(ref.data.home)/atom_data"
+atom_data_path: "$(REF.DATA.HOME)/atom_data"
 
 # This section holds information about mechanism of saving the HTML
 # report of the tests.
