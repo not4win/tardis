@@ -25,7 +25,7 @@ jobs:
         displayName: "Install TARDIS env"
       - bash: |
           source activate tardis
-          git clone https://github.com/tardis-sn/tardis-refdata.git $(ref.data.home)
+          sh ci-helpers/fetch_reference_data.sh
         displayName: "Fetch ALL reference data"
       - bash: |
           source activate tardis
@@ -34,6 +34,7 @@ jobs:
 
       - bash: |
           source activate tardis
+          export QT_API=pyqt
           pytest tardis --tardis-refdata=$(ref.data.home) --generate-reference
         displayName: "Generate new reference data"
 
