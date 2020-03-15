@@ -2,11 +2,11 @@
 # simple pipeline to run integration tests
 
 trigger:
-- master
+- trial-int
 
 variables:
   system.debug: "true"
-  ref.data.home: "$(Agent.BuildDirectory)/tardis-refdata"
+  REF.DATA.HOME: "$(Agent.BuildDirectory)/tardis-refdata"
   ref.data.github.url: "https://github.com/tardis-sn/tardis-refdata.git"
   tardis.build.dir: $(Build.Repository.LocalPath)
 
