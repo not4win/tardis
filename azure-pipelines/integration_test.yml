@@ -23,10 +23,7 @@ jobs:
       - bash: |
           sh ci-helpers/install_tardis_env.sh
         displayName: "Install TARDIS env"
-      - bash: |
-          source activate tardis
-          sh ci-helpers/fetch_reference_data.sh
-        displayName: "Fetch ALL reference data"
+
       - bash: |
           source activate tardis
           python setup.py build_ext --inplace
@@ -40,6 +37,7 @@ jobs:
       - bash: |
           source activate tardis
           export QT_API=pyqt
+          sh ci-helpers/fetch_reference_data.sh
           pytest tardis --integration=azure-pipelines/integration.yml  -m integration --less-packets --generate-reference --html=report2.html
         displayName: "Run integration tests "
       - task: PublishPipelineArtifact@1
