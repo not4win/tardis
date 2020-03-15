@@ -38,7 +38,7 @@ jobs:
 
       - bash: |
           source activate tardis
-          pytest tardis --integration=integration.yml -m integration --less-packets --html=report2.html
+          pytest tardis --integration=$(Agent.BuildDirectory)/tardis/azure-pipelines/integration.yml  -m integration --less-packets --html=report2.html
         displayName: "Run integration tests with generated reference"
       - task: PublishPipelineArtifact@1
         inputs:
