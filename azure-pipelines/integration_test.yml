@@ -6,7 +6,7 @@ trigger:
 
 variables:
   system.debug: "true"
-  REF.DATA.HOME: "$(Agent.BuildDirectory)/tardis-refdata"
+  REF.DATA.HOME: "tardis-refdata"
   ref.data.github.url: "https://github.com/tardis-sn/tardis-refdata.git"
   tardis.build.dir: $(Build.Repository.LocalPath)
 
