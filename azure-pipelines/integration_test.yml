@@ -20,6 +20,11 @@ jobs:
           echo "##vso[task.prependpath]$CONDA/bin"
           sudo chown -R $USER $CONDA
         displayName: "Add CONDA to path"
+
+      - bash: |
+          git clone https://github.com/tardis-sn/tardis-refdata.git
+        displayName: "fetch all ref-data"
+
       - bash: |
           sh ci-helpers/install_tardis_env.sh
         displayName: "Install TARDIS env"
