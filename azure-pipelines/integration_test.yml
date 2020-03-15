@@ -35,14 +35,8 @@ jobs:
       - bash: |
           source activate tardis
           export QT_API=pyqt
-          pytest tardis --tardis-refdata=$(ref.data.home) --generate-reference
-        displayName: "Generate new reference data"
-
-      - bash: |
-          source activate tardis
-          export QT_API=pyqt
           pytest tardis --integration=azure-pipelines/integration.yml  -m integration --less-packets --generate-reference --html=report2.html
-        displayName: "Run integration tests with generated reference"
+        displayName: "Run integration tests "
       - task: PublishPipelineArtifact@1
         inputs:
           targetPath: "$(Agent.BuildDirectory)/tardis/report1.html"
