@@ -31,16 +31,16 @@ jobs:
           source activate tardis
           python setup.py build_ext --inplace
         displayName: "Build & install TARDIS"
+
       - bash: |
           source activate tardis
-          export QT_API=pyqt
-          pytest tardis --integration=azure-pipelines/integration.yml -m integration --generate-reference --less-packets --html=report1.html
-        displayName: "Run integration tests and generate reference"
+          pytest tardis --tardis-refdata=$(ref.data.home) --generate-reference
+        displayName: "Generate new reference data"
 
       - bash: |
           source activate tardis
           export QT_API=pyqt
-          pytest tardis --integration=azure-pipelines/integration.yml  -m integration --less-packets --html=report2.html
+          pytest tardis --integration=azure-pipelines/integration.yml  -m integration --less-packets --generate-reference --html=report2.html
         displayName: "Run integration tests with generated reference"
       - task: PublishPipelineArtifact@1
         inputs:
